@@ -1,0 +1,88 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  background: black;
+  flex-direction: column;
+  /* background-image: url(images/background.jpeg); */
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.matchGame {
+  width: 640px;
+  height: 640px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+.matchCard {
+  width: calc(49% - 10px);
+  max-width: 150px;
+  height: calc(33.333% - 10px);
+  margin: 5px;
+  position: relative;
+  transform-style: preserve-3d;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.matchCard:active {
+  transform: scale(0.97);
+  transition: transform 0.2s;
+}
+
+.matchCard.flip {
+  transform: rotateY(180deg);
+}
+
+.front,
+.back {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  position: absolute;
+  border: 3px solid #f5b0cb;
+  backface-visibility: hidden;
+}
+
+.front {
+  transform: rotateY(180deg);
+}
+
+@media only screen and (min-width: 600px) {
+  .matchCard {
+    width: calc(25% - 10px);
+  }
+}
+
+button {
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  color: #f5b0cb;
+  margin: 20px;
+}
+
+h1 {
+  color: #f5b0cb;
+  text-align: center;
+}
+
+#minutes,
+#seconds {
+  color: #f5b0cb;
+}
