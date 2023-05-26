@@ -57,12 +57,22 @@ function shuffle() {
 }
 
 document.getElementById("start").addEventListener("click", () => {
-  shuffle();
-  setInterval(setTime, 1000);
+  if (totalSeconds === 0) {
+    shuffle();
+    setInterval(setTime, 1000);
+  } else {
+    return;
+  }
 });
 
 document.getElementById("reset").addEventListener("click", () => {
+  document.querySelectorAll(".matchCard").forEach((card) => {
+    card.classList.remove("flip");
+  });
   shuffle();
+  resetBoard();
+  cards.forEach((card) => card.addEventListener("click", flipCard));
+  totalSeconds = 0;
 });
 
 var minutesLabel = document.getElementById("minutes");

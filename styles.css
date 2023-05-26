@@ -2,14 +2,16 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "sofia", serif;
 }
 
 body {
   height: 100vh;
   display: flex;
-  background: black;
+  background: rgba(0, 0, 0, 0.6);
+  background-blend-mode: multiply;
   flex-direction: column;
-  /* background-image: url(images/background.jpeg); */
+  background-image: url(images/background.jpeg);
 }
 
 header {
@@ -19,7 +21,7 @@ header {
 }
 
 .matchGame {
-  width: 640px;
+  width: 80%;
   height: 640px;
   margin: auto;
   display: flex;
@@ -57,29 +59,72 @@ header {
   position: absolute;
   border: 3px solid #f5b0cb;
   backface-visibility: hidden;
+  background-color: #4d0066;
+  border-radius: 5px;
 }
 
 .front {
   transform: rotateY(180deg);
 }
 
+.timer {
+  display: flex;
+  flex-direction: row;
+  color: #f5b0cb;
+  font-size: x-large;
+}
+
 @media only screen and (min-width: 600px) {
   .matchCard {
     width: calc(25% - 10px);
+    min-height: 200px;
+  }
+  .matchGame {
+    width: 640px;
   }
 }
 
 button {
-  width: 100px;
-  height: 40px;
-  border-radius: 10px;
-  color: #f5b0cb;
+  appearance: none;
+  background-color: #ffffff;
+  border-radius: 40em;
+  border-style: none;
+  box-shadow: #adcfff 0 -12px 6px inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "sofia", serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.24px;
   margin: 20px;
+  outline: none;
+  padding: 1rem 1.3rem;
+  quotes: auto;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+button:hover {
+  background-color: #f5b0cb;
+  box-shadow: #d580ff 0 -6px 8px inset;
+  transform: scale(1.125);
+}
+
+button:active {
+  transform: scale(1.025);
 }
 
 h1 {
   color: #f5b0cb;
   text-align: center;
+  margin: 20px;
+  font-size: 45px;
 }
 
 #minutes,
