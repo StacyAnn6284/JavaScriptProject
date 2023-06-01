@@ -3,6 +3,7 @@ let hasFlippedCard = false;
 let firstCard;
 let secondCard;
 let lockBoard = false;
+let timerCtrl;
 
 function flipCard() {
   if (lockBoard) return;
@@ -18,10 +19,31 @@ function flipCard() {
   checkForMatch();
 }
 
+let matchCount = 1;
+
+function playVideo() {
+  document.getElementById("winner").style.display = "flex";
+
+  setTimeout(() => {
+    document.getElementById("winner").style.display = "none";
+    document.querySelectorAll(".matchCard").forEach((card) => {
+      card.classList.remove("flip");
+    });
+  }, 5000);
+}
+
 function checkForMatch() {
-  if (firstCard.dataset.selector === secondCard.dataset.selector) {
+  if (
+    firstCard.dataset.selector === secondCard.dataset.selector &&
+    matchCount < 6
+  ) {
     disableCards();
+    matchCount++;
     return;
+  } else if (matchCount === 6) {
+    clearInterval(timerCtrl);
+    disableCards();
+    playVideo();
   }
 
   unflipCards();
@@ -59,7 +81,7 @@ function shuffle() {
 document.getElementById("start").addEventListener("click", () => {
   if (totalSeconds === 0) {
     shuffle();
-    setInterval(setTime, 1000);
+    timerCtrl = setInterval(setTime, 1000);
   } else {
     return;
   }
@@ -69,6 +91,7 @@ document.getElementById("reset").addEventListener("click", () => {
   document.querySelectorAll(".matchCard").forEach((card) => {
     card.classList.remove("flip");
   });
+  matchCount = 0;
   shuffle();
   resetBoard();
   cards.forEach((card) => card.addEventListener("click", flipCard));
@@ -92,4 +115,8 @@ function pad(val) {
   } else {
     return valString;
   }
+}
+
+if (matchCount >= 6) {
+  clearInterval(setTime());
 }
