@@ -127,7 +127,22 @@ h1 {
   font-size: 45px;
 }
 
+h2 {
+  color: #f5b0cb;
+  margin: auto;
+  font-size: 35px;
+}
+
 #minutes,
 #seconds {
   color: #f5b0cb;
+}
+
+#winner {
+  border: solid 1px #ffffff;
+  display: none;
+  flex-direction: column;
+  margin: auto;
+  background-color: #4d0066;
+  padding: 10px;
 }
