@@ -80,6 +80,7 @@ function shuffle() {
 
 document.getElementById("start").addEventListener("click", () => {
   if (totalSeconds === 0) {
+    clearInterval(timerCtrl);
     shuffle();
     timerCtrl = setInterval(setTime, 1000);
   } else {
@@ -92,6 +93,8 @@ document.getElementById("reset").addEventListener("click", () => {
     card.classList.remove("flip");
   });
   matchCount = 0;
+  clearInterval(timerCtrl);
+  timerCtrl = setInterval(setTime, 1000);
   shuffle();
   resetBoard();
   cards.forEach((card) => card.addEventListener("click", flipCard));
