@@ -92,7 +92,7 @@ document.getElementById("reset").addEventListener("click", () => {
   document.querySelectorAll(".matchCard").forEach((card) => {
     card.classList.remove("flip");
   });
-  matchCount = 0;
+  matchCount = 1;
   clearInterval(timerCtrl);
   timerCtrl = setInterval(setTime, 1000);
   shuffle();
